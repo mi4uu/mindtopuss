@@ -1,0 +1,24 @@
+{
+  "name": "@mindtopuss/workspaces",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "clean": "rm -rf node_modules packages/*/node_modules bun.lockb packages/*/bun.lockb",
+    "build": "bun --filter '*' build",
+    "check": "bun --filter '*' check",
+    "dev": "bun --filter '*' dev",
+    "format": "bun --filter '*' format"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "@moonrepo/cli": "^1.30.6"
+  },
+  "trustedDependencies": [
+    "@biomejs/biome",
+    "@moonrepo/cli",
+    "bun",
+    "core-js"
+  ]
+}

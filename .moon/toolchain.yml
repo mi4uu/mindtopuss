@@ -1,0 +1,4 @@
+# Enable Bun
+bun:
+  inferTasksFromScripts: true
+  

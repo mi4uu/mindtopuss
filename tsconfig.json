@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.options.json",
+  "files": [],
+  "references": [
+    {
+      "path": "packages/common"
+    },
+    {
+      "path": "packages/frontend"
+    }
+    // ... more
+  ]
+}
