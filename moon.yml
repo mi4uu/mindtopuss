@@ -5,42 +5,46 @@ project:
   description: 'artificial intelligence, Mindtopuss aims to simplify your life by automating the organization and management of your data. With a user-friendly interface and powerful AI capabilities, Mindtopuss helps you stay organized, efficient, and productive.'
   owner: 'mi4uu'
 
-tasks:
-  build:
-    command:
-    - bun
-    - --filter
-    - '*'
-    - build
-    platform: bun
-  check:
-    command:
-    - bun
-    - --filter
-    - '*'
-    - check
-    platform: bun
-  clean-all:
-    command:
-    - rm
-    - -rf
-    - node_modules
-    - packages/*/node_modules
-    - bun.lockb
-    - packages/*/bun.lockb
-    platform: system
-  dev:
-    command:
-    - bun
-    - --filter
-    - '*'
-    - dev
-    local: true
-    platform: bun
-  format:
-    command:
-    - bun
-    - --filter
-    - '*'
-    - format
-    platform: bun
+workspace:
+  inheritedTasks:
+    include: []
+
+# tasks:
+  # build:
+  #   command:
+  #   - bun
+  #   - --filter
+  #   - '*'
+  #   - build
+  #   platform: bun
+  # check:
+  #   command:
+  #   - bun
+  #   - --filter
+  #   - '*'
+  #   - check
+  #   platform: bun
+  # clean-all:
+  #   command:
+  #   - rm
+  #   - -rf
+  #   - node_modules
+  #   - packages/*/node_modules
+  #   - bun.lockb
+  #   - packages/*/bun.lockb
+  #   platform: system
+  # dev:
+  #   command:
+  #   - bun
+  #   - --filter
+  #   - '*'
+  #   - dev
+  #   local: true
+  #   platform: bun
+  # format:
+  #   command:
+  #   - bun
+  #   - --filter
+  #   - '*'
+  #   - format
+  #   platform: bun
