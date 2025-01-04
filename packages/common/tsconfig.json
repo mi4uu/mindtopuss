@@ -1,5 +1,4 @@
 {
-    "extends": "../../tsconfig.optionsmk.json",
-    "include": ["src"]
-  }
-  
+  "extends": "../../tsconfig.optionsmk.json",
+  "include": ["src"]
+}
