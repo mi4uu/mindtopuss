@@ -1,6 +1,11 @@
 vcs:
   manager: 'git'
   defaultBranch: 'master'
+  syncHooks: true
+  hooks:
+    pre-commit: 
+    - 'bunx moon run :lint :format --affected --status=staged'
 
 projects:
-  main: ""
+  - "."
+  - "packages/*"

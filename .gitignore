@@ -12,3 +12,9 @@ dist/
 !.vscode/extensions.json
 .idea
 .moon/cache
+
+# The `outDir` for declarations
+lib/
+# Build cache manifests
+*.tsbuildinfo
+.moon/cache/** 

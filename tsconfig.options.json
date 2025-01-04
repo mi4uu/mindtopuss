@@ -1,15 +1,12 @@
 {
+  "extends": "tsconfig-moon/tsconfig.projects.json",
     "compilerOptions": {
-      "lib": ["ES2020"],
-      "noEmit": true,
       "skipLibCheck": true,
       "useDefineForClassFields": true,
-  
-
+      "resolveJsonModule": false,
       "allowImportingTsExtensions": true,
       "noUnusedLocals": true,
       "noUnusedParameters": true,
-
 
       "allowSyntheticDefaultImports": true,
       "esModuleInterop": true,
@@ -17,7 +14,10 @@
       "module": "esnext",
       "moduleResolution": "bundler",
       "strict": true,
-      "target": "esnext"
+      "target": "esnext",
+
+    "outDir": "${configDir}/lib",
+    "rootDir": "${configDir}/src",
 
     },
     // "include": [],

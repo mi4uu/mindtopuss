@@ -1,4 +1,8 @@
 # Enable Bun
 bun:
-  inferTasksFromScripts: false
+  version: 1.1.42
+  dependencyVersionFormat: "workspace"
   
+typescript: 
+  syncProjectReferences: true
+  syncProjectReferencesToPaths: true

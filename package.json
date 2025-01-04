@@ -3,22 +3,23 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "clean": "rm -rf node_modules packages/*/node_modules bun.lockb packages/*/bun.lockb",
-    "build": "bun --filter '*' build",
-    "check": "bun --filter '*' check",
-    "dev": "bun --filter '*' dev",
-    "format": "bun --filter '*' format"
-  },
-  "workspaces": [
-    "packages/*"
-  ],
-  "devDependencies": {
-    "@moonrepo/cli": "^1.30.6"
+    "moon": "moon --color --log debug"
   },
   "trustedDependencies": [
     "@biomejs/biome",
     "@moonrepo/cli",
     "bun",
     "core-js"
-  ]
+  ],
+  "workspaces": [
+    "packages/*"
+  ],
+  "packageManager": ">=bun@1.1.42",
+  "engines": {
+    "bun": ">=1.1.42"
+  },
+  "devDependencies": {
+    "@moonrepo/cli": "^1.30.6",
+    "tsconfig-moon": "^1.3.0"
+  }
 }

@@ -8,6 +8,22 @@
     {
       "path": "packages/frontend"
     }
-    // ... more
-  ]
+  ],
+  "baseUrl": ".",
+  "compilerOptions": {
+    "paths": {
+      "@mindtopuss/common/*": [
+        "packages/common/src/*"
+      ],
+      "@mindtopuss/frontend": [
+        "packages/frontend/src/index.tsx"
+      ],
+      "@mindtopuss/frontend/*": [
+        "packages/frontend/src/*"
+      ],
+      "@mindtopuss/common": [
+        "packages/common/src/index.ts"
+      ]
+    }
+  }
 }
