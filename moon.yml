@@ -1,6 +1,9 @@
 platform: 'bun'
-
-
+type: application
+project:
+  name: 'MindTopuss'
+  description: 'artificial intelligence, Mindtopuss aims to simplify your life by automating the organization and management of your data. With a user-friendly interface and powerful AI capabilities, Mindtopuss helps you stay organized, efficient, and productive.'
+  owner: 'mi4uu'
 
 tasks:
   build:
