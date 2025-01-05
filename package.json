@@ -3,7 +3,8 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "moon": "moon --color --log debug"
+    "moon":"moon",
+    "moon:debug": "moon --color --log debug"
   },
   "trustedDependencies": [
     "@biomejs/biome",

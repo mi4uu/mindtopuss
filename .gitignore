@@ -18,3 +18,5 @@ lib/
 # Build cache manifests
 *.tsbuildinfo
 .moon/cache/** 
+.cache
+**/.cache

@@ -1,6 +1,7 @@
 vcs:
   manager: 'git'
   defaultBranch: 'master'
+  provider: 'github'
   syncHooks: true
   hooks:
     pre-commit: 

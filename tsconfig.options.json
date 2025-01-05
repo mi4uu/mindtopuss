@@ -20,6 +20,7 @@
     "rootDir": "${configDir}/src",
 
     },
+    "tsBuildInfoFile": "${configDir}/.cache/tsconfig.tsbuildinfo",
     // "include": [],
     // "exclude": ["node_modules","dist","**/node_modules"]
   }

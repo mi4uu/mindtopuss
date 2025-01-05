@@ -9,42 +9,15 @@ workspace:
   inheritedTasks:
     include: []
 
-# tasks:
-  # build:
-  #   command:
-  #   - bun
-  #   - --filter
-  #   - '*'
-  #   - build
-  #   platform: bun
-  # check:
-  #   command:
-  #   - bun
-  #   - --filter
-  #   - '*'
-  #   - check
-  #   platform: bun
-  # clean-all:
-  #   command:
-  #   - rm
-  #   - -rf
-  #   - node_modules
-  #   - packages/*/node_modules
-  #   - bun.lockb
-  #   - packages/*/bun.lockb
-  #   platform: system
-  # dev:
-  #   command:
-  #   - bun
-  #   - --filter
-  #   - '*'
-  #   - dev
-  #   local: true
-  #   platform: bun
-  # format:
-  #   command:
-  #   - bun
-  #   - --filter
-  #   - '*'
-  #   - format
-  #   platform: bun
+tasks:
+  clean:
+    command:
+    - bun
+    - exec
+    - "rm -rf node_modules bun.lockb .moon/cache"
+    platform: bun
+    options:
+      cache: false
+      allowFailure: true
+      runFromWorkspaceRoot: true
+ 

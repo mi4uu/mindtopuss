@@ -1,4 +1,15 @@
 tasks:
+  clean:
+    command:
+      - 'bun'
+      - 'exec'
+      - 'rm -rf node_modules lib .cache'
+    
+    platform: bun
+    options:
+      cache: false
+      allowFailure: true
+
   typecheck:
     command:
       - 'tsc'
@@ -12,6 +23,7 @@ tasks:
       # Source and test files
       - 'src/**/*'
       - 'tests/**/*'
+      - '.cache/**/*'
       # Type declarations
       - 'types/**/*'
       # Project configs

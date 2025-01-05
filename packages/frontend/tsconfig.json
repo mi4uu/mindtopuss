@@ -7,6 +7,8 @@
     ],
     "jsx": "react-jsx",
     "target": "ES2020",
+    "tsBuildInfoFile": ".cache/tsconfig.tsbuildinfo"
+    ,
     "paths": {
       "@mindtopuss/common/*": [
         "../common/src/*"
@@ -16,7 +18,6 @@
         "../common/src/index.ts"
       ]
     },
-    "outDir": "lib"
   },
   "include": [
     "src"
