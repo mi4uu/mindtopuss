@@ -6,6 +6,12 @@ vcs:
   hooks:
     pre-commit: 
     - 'bunx moon run :lint :format --affected --status=staged'
+    post-commit:
+    - |
+      if ! git diff --quiet; then
+        git add .
+        git commit -m "chore: auto-commit changes from pre-commit hook"
+      fi
 
 projects:
   - "."
