@@ -48,6 +48,25 @@ tasks:
       - 'tsconfig.json'
       - 'tsconfig.*.json'
       - '/tsconfig.options.json'
+      - '/biome.json'
+    outputs: 
+      - 'src/**/*'
+      - 'tests/**/*'
+    deps: 
+      - '^:typecheck'
+
+  format:
+    command:
+      - 'biome'
+      - 'format'
+      - '--write'
+    inputs: 
+      - 'src/**/*'
+      - 'tests/**/*'
+      - 'tsconfig.json'
+      - 'tsconfig.*.json'
+      - '/tsconfig.options.json'
+      - '/biome.json'
     outputs: 
       - 'src/**/*'
       - 'tests/**/*'
