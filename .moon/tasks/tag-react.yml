@@ -1,0 +1,16 @@
+tasks:
+  build:
+    type: build
+    command:
+      - 'rsbuild'
+      - 'build'
+    outputs: 
+      - 'dist/**/*'
+    inputs: 
+      - 'src/**/*'
+      - 'tsconfig.json'
+      - 'tsconfig.*.json'
+      - '/tsconfig.options.json'
+      - '/biome.json'
+    deps: 
+      - '^:typecheck'

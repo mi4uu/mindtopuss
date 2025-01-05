@@ -1,0 +1,62 @@
+tasks:
+  fix:
+    command:
+      - 'biome'
+      - 'check'
+      - '--write'
+    inputs: 
+      - 'src/**/*'
+      - 'tests/**/*'
+      - 'tsconfig.json'
+      - 'tsconfig.*.json'
+      - '/tsconfig.options.json'
+      - '/biome.json'
+    outputs: 
+      - 'src/**/*'
+      - 'tests/**/*'
+    deps: 
+      - '^:typecheck'
+    local: true
+    type: build
+    options:
+      runInCI: false
+      persistent: false
+
+  format:
+    command:
+      - 'biome'
+      - 'format'
+      - '--write'
+    inputs: 
+      - 'src/**/*'
+      - 'tests/**/*'
+      - 'tsconfig.json'
+      - 'tsconfig.*.json'
+      - '/tsconfig.options.json'
+      - '/biome.json'
+    outputs: 
+      - 'src/**/*'
+      - 'tests/**/*'
+    deps: 
+      - '^:typecheck'
+    local: true
+    type: build
+    options:
+      runInCI: false
+      persistent: false
+
+
+  lint-ci:
+    command:
+      - 'biome'
+      - 'ci'
+    inputs: 
+      - 'src/**/*'
+      - 'tests/**/*'
+      - 'tsconfig.json'
+      - 'tsconfig.*.json'
+      - '/tsconfig.options.json'
+      - '/biome.json'
+    type: test
+    options:
+      runInCI: true

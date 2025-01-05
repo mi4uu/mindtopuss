@@ -1,1 +1,6 @@
 language: "typescript"
+type: "application"
+tags:
+  - "frontend"
+  - "react"
+  - "enable-lint"

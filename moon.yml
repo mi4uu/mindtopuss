@@ -1,5 +1,5 @@
 platform: 'bun'
-type: application
+type: configuration
 project:
   name: 'MindTopuss'
   description: 'artificial intelligence, Mindtopuss aims to simplify your life by automating the organization and management of your data. With a user-friendly interface and powerful AI capabilities, Mindtopuss helps you stay organized, efficient, and productive.'
@@ -16,8 +16,10 @@ tasks:
     - exec
     - "rm -rf node_modules bun.lockb .moon/cache"
     platform: bun
+    local: true
     options:
       cache: false
       allowFailure: true
       runFromWorkspaceRoot: true
+      runInCI: false
  

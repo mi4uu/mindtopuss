@@ -1,0 +1,13 @@
+tasks:
+  clean:
+    command:
+      - 'bun'
+      - 'exec'
+      - 'rm -rf node_modules lib .cache'
+    
+    platform: bun
+    local: true
+    options:
+      cache: false
+      allowFailure: true
+      runInCI: false
