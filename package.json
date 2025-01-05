@@ -2,6 +2,7 @@
   "name": "@mindtopuss/workspaces",
   "private": true,
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "moon":"moon",
     "moon:debug": "moon --color --log debug"

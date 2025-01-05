@@ -2,6 +2,7 @@
   "name": "@mindtopuss/frontend",
   "private": true,
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "build": "rsbuild build",
     "check": "biome check --write",
