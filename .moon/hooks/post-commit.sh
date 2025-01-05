@@ -6,7 +6,7 @@ set -eo pipefail
 
 if ! git diff --quiet; then
   git add .
-  git commit -m "chore: auto-commit changes from pre-commit hook"
+  git commit --amend --no-edit
 fi
 
 
