@@ -1,0 +1,43 @@
+name: 'Pipeline'
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+jobs:
+  ci:
+    name: CI
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        index: [0, 1]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/cache@v4
+        id: cache
+        with:
+          path: |
+            ~/.proto
+          key: ${{ runner.os }}-proto
+      - name: "Install proto and moon"
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: |
+                curl -fsSL https://moonrepo.dev/install/proto.sh | bash -s -- --yes
+                pwd
+                ls -la
+                export PATH=$PATH:~/.proto/bin/
+                proto plugin add moon "https://raw.githubusercontent.com/moonrepo/moon/master/proto-plugin.toml" --to global
+                proto install moon
+                proto install bun
+        shell: bash
+      - run: |
+          export PATH=$PATH:~/.proto/bin/
+          moon ci
+      - uses: 'moonrepo/run-report-action@v1'
+        if: success() || failure()
+        with:
+          access-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: appthrust/moon-ci-retrospect@v1
+        if: success() || failure()
