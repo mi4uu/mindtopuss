@@ -1,9 +1,8 @@
+import { array_to_object } from '@mindtopuss-lib/common'
 import { Literal, type Static, Type } from '@sinclair/typebox'
-
 // export const objectFromEntries = Object.fromEntries as <Key extends PropertyKey, Entries extends ReadonlyArray<readonly [Key, Key]>>(values: Entries) => {
 // 	[K in Extract<Entries[number], readonly [Key, unknown]>[0]]: K
 // };
-array_to_object
 
 export const action_types_list = [
   'ANSWER',
@@ -16,11 +15,7 @@ export const action_types_list = [
   'REMIND_ME',
   'ASK',
 ] as const
-export const actions_types = objectFromEntries(
-  action_types_list.map((v) => [v, v]),
-)
-
-objectFromList(action_types_list)
+const action_types = array_to_object(action_types_list, Type.Literal)
 
 export const get_all_actions = (agents: string[]) => {
   const answer = Type.Object(
@@ -110,8 +105,6 @@ export const get_all_actions = (agents: string[]) => {
     },
     { description: 'ask other team member' },
   )
-}
 
-export const get_actions = (agents: string[], types: ALL_TYPES[]) => {
-  Type.Union([answer, thinking])
+  return Type.Union([answer, thinking])
 }

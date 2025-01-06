@@ -11,8 +11,8 @@
     "preview": "rsbuild preview"
   },
   "dependencies": {
+    "@mindtopuss-lib/common": "workspace:*",
     "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "@mindtopuss/common": "workspace:*"
+    "react-dom": "^19.0.0"
   }
 }

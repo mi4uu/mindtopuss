@@ -1,5 +1,1 @@
-console.log('common')
-
-console.log('jo')
-
-console.log('comjjjmon')
+export * from './helper-functions/object-from-entries'

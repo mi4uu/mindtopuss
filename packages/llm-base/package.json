@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {},
   "dependencies": {
-    "@sinclair/typebox": "^0.34.13"
+    "@sinclair/typebox": "^0.34.13",
+    "@mindtopuss-lib/common": "workspace:*"
   },
   "devDependencies": {
     "@rsbuild/core": "^1.1.8",

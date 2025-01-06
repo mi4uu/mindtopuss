@@ -3,7 +3,7 @@ tasks:
     command:
       - 'bun'
       - 'exec'
-      - 'rm -rf node_modules lib .cache'
+      - 'rm -rf node_modules lib bun.lockb'
     
     platform: bun
     local: true

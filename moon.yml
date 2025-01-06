@@ -14,7 +14,7 @@ tasks:
     command:
     - bun
     - exec
-    - "rm -rf node_modules bun.lockb .moon/cache"
+    - "rm -rf node_modules bun.lockb .moon/cache "
     platform: bun
     local: true
     options:
