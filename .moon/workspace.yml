@@ -1,3 +1,5 @@
+$schema: 'https://moonrepo.dev/schemas/workspace.json'
+
 vcs:
   manager: 'git'
   defaultBranch: 'master'
@@ -16,3 +18,11 @@ vcs:
 projects:
   - "."
   - "packages/*"
+  - "libs/*"
+
+runner:
+  archivableTargets:
+    - ':lint'
+    - ':test'
+    - ':typecheck'
+  logRunningCommand: true

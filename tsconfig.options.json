@@ -5,8 +5,8 @@
       "useDefineForClassFields": true,
       "resolveJsonModule": false,
       "allowImportingTsExtensions": true,
-      "noUnusedLocals": true,
-      "noUnusedParameters": true,
+      "noUnusedLocals": false,
+      "noUnusedParameters": false,
 
       "allowSyntheticDefaultImports": true,
       "esModuleInterop": true,
@@ -15,12 +15,12 @@
       "moduleResolution": "bundler",
       "strict": true,
       "target": "esnext",
+      // "isolatedDeclarations": true,
+      "outDir": "${configDir}/types",
+      "rootDir": "${configDir}",
 
-    "outDir": "${configDir}/lib",
-    "rootDir": "${configDir}/src",
-
+    // "tsBuildInfoFile": "/.moon/cache/types/" //"${configDir}/.cache/tsconfig.tsbuildinfo"
     },
-    "tsBuildInfoFile": "${configDir}/.cache/tsconfig.tsbuildinfo",
     // "include": [],
     // "exclude": ["node_modules","dist","**/node_modules"]
   }

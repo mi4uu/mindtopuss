@@ -4,17 +4,21 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "moon":"moon",
+    "moon": "moon",
     "moon:debug": "moon --color --log debug"
   },
   "trustedDependencies": [
     "@biomejs/biome",
     "@moonrepo/cli",
     "bun",
-    "core-js"
+    "core-js",
+    "onnxruntime-node",
+    "protobufjs",
+    "sharp"
   ],
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "libs/*"
   ],
   "packageManager": ">=bun@1.1.42",
   "engines": {

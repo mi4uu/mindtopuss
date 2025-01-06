@@ -6,3 +6,4 @@ bun:
 typescript: 
   syncProjectReferences: true
   syncProjectReferencesToPaths: true
+  routeOutDirToCache: true

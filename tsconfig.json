@@ -3,14 +3,23 @@
   "files": [],
   "references": [
     {
+      "path": "libs/browser_ai"
+    },
+    {
+      "path": "libs/common"
+    },
+    {
       "path": "packages/common"
     },
     {
       "path": "packages/frontend"
+    },
+    {
+      "path": "packages/llm-base"
     }
   ],
-  "baseUrl": ".",
   "compilerOptions": {
+    "baseUrl": ".",
     "paths": {
       "@mindtopuss/common/*": [
         "packages/common/src/*"

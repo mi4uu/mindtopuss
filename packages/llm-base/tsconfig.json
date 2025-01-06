@@ -2,6 +2,6 @@
   "extends": "../../tsconfig.options.json",
   "include": ["src"],
   "compilerOptions": {
-    "tsBuildInfoFile": ".cache/tsconfig.tsbuildinfo"
+    "outDir": "../../.moon/cache/types/packages/llm-base"
   }
 }

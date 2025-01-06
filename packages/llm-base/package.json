@@ -1,22 +1,16 @@
 {
-  "name": "@mindtopuss/common",
+  "name": "@mindtopuss/llm-base",
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "scripts": {
-    "fix": "biome check --write",
-    "format": "biome format --write"
-  },
+  "scripts": {},
   "dependencies": {
-    "bun": "^1.1.42"
+    "@sinclair/typebox": "^0.34.13"
   },
   "devDependencies": {
-    "@biomejs/biome": "^1.9.3",
     "@rsbuild/core": "^1.1.8",
     "@rsbuild/plugin-react": "^1.0.7",
     "@types/bun": "^1.1.14",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
     "typescript": "^5.7.2"
   }
 }

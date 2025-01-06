@@ -1,0 +1,5 @@
+type: 'library'
+tags:
+  - 'utils'
+  - "enable-lint"
+language: 'typescript'

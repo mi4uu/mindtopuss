@@ -12,9 +12,8 @@ tasks:
       # Source and test files
       - 'src/**/*'
       - 'tests/**/*'
-      - '.cache/**/*'
       # Type declarations
-      - 'types/**/*'
+      - '/.mood/cache/types/**/*'
       # Project configs
       - 'tsconfig.json'
       - 'tsconfig.*.json'
@@ -22,7 +21,7 @@ tasks:
       - '/tsconfig.options.json'
     outputs:
       # Matches `compilerOptions.outDir`
-      - 'lib'
+      - '/.moon/cache/types/**/*'
     deps: 
       - '^:typecheck'
     type: build

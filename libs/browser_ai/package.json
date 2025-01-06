@@ -1,0 +1,14 @@
+{
+  "name": "@mindtopuss-lib/browser-ai",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {},
+  "dependencies": {
+    "@huggingface/transformers": "^3.2.4"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.1.14",
+    "typescript": "^5.7.2"
+  }
+}

@@ -1,0 +1,6 @@
+type: 'library'
+tags:
+  - "backend"
+  - 'utils'
+  - "enable-lint"
+language: 'typescript'

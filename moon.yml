@@ -10,7 +10,7 @@ workspace:
     include: []
 
 tasks:
-  clean:
+  clean-root:
     command:
     - bun
     - exec
