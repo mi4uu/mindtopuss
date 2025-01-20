@@ -11,3 +11,8 @@ tasks:
       cache: false
       allowFailure: true
       runInCI: false
+  clean-cache:
+    command: 'moon clean --lifetime "0 seconds"'
+    options:
+      cache: false
+      runInCI: false

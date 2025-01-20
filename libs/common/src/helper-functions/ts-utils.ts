@@ -39,3 +39,7 @@ console.log(t)
 const xx = t[1]
 const o = Object.fromEntries(t.entries())
 console.log(o)
+
+type Mutable<T> = {
+  -readonly [key in keyof T]: T[key]
+}

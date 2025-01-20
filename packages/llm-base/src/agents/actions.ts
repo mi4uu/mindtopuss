@@ -1,110 +1,138 @@
 import { array_to_object } from '@mindtopuss-lib/common'
 import { Literal, type Static, Type } from '@sinclair/typebox'
+import { zodToJsonSchema } from 'zod-to-json-schema'
+
 // export const objectFromEntries = Object.fromEntries as <Key extends PropertyKey, Entries extends ReadonlyArray<readonly [Key, Key]>>(values: Entries) => {
 // 	[K in Extract<Entries[number], readonly [Key, unknown]>[0]]: K
 // };
+import { ZodAny, ZodEnum, ZodObject, z } from 'zod'
 
 export const action_types_list = [
   'ANSWER',
   'VOTE',
-  'SPEAK',
-  'THINKING',
+  'SHARE',
+  // 'THINKING',
   'FINISH',
   'REFUSE',
   'SUMMARY',
   'REMIND_ME',
   'ASK',
+  'NOTE',
+  'SEARCH_WEB',
 ] as const
-const action_types = array_to_object(action_types_list, Type.Literal)
+const action_types = array_to_object(action_types_list, (x) => x)
+
+export const get_schema = (agents: string[]) => {
+  const Step = z.object({
+    explanation: z.string().optional(),
+    output: z.string(),
+  })
+
+  const actions = get_all_actions(agents)
+
+  const schema = z.object({
+    thinking: z
+      .array(Step)
+      .describe(
+        'thinking process, notes, steps, it wont be shared ar avilable for anyone except you. you can think it thru in here.',
+      ),
+    actions: z
+      .array(
+        z.object({
+          //action:z.enum(action_types_list),
+          action: actions,
+          output: z.string(),
+        }),
+      )
+      .describe(
+        'provide list of action to get closer to solving main problem. to get new information, inform someone etc. here you can put your previous idea in motion',
+      ),
+
+    is_solved: z
+      .boolean()
+      .describe('is problem solved, or if we could do better?'),
+  })
+
+  return schema
+}
 
 export const get_all_actions = (agents: string[]) => {
-  const answer = Type.Object(
-    {
-      type: Type.Literal('ANSWER'),
-      answer: Type.String({ description: 'your answer' }),
-    },
-    {
-      description: "Provide a clear and concise answer to the user's question.",
-    },
-  )
-
-  const vote = Type.Object(
-    {
-      type: Type.Literal('VOTE'),
-      vote: Type.Boolean({ description: 'is this the best answer?' }),
-    },
-    {
-      description:
-        'do you think that this answer solves problem, and you agree with it?',
-    },
-  )
-
-  const speak = Type.Object(
-    {
-      type: Type.Literal('SPEAK'),
-      content: Type.String(),
-    },
-    { description: 'if you want to say something, or provide a comment' },
-  )
-
-  const thinking = Type.Object(
-    {
-      type: Type.Literal('THINKING'),
-      through: Type.String({ description: 'your thinking process' }),
-    },
-    { description: 'Thinking step by step to provide a well-reasoned answer.' },
-  )
-
-  const finish = Type.Object(
-    {
-      type: Type.Literal('FINISH'),
-    },
-    {
-      description:
-        'if you think that you solved the problem and no more actions needed',
-    },
-  )
-
-  const refuse = Type.Object(
-    {
-      type: Type.Literal('REFUSE'),
-    },
-    { description: 'Skip your turn' },
-  )
-
-  const summarize = Type.Object(
-    {
-      type: Type.Literal('SUMMARY'),
-      topic: Type.String(),
-      content: Type.String(),
-      summarized_messages_ids: Type.Array(Type.String(), {
-        minItems: 0,
-        description: 'ids of messages that was summarized summarized',
-      }),
-    },
-    { description: 'summarize the conversation' },
-  )
-
-  const remindme = Type.Object(
-    {
-      type: Type.Literal('REMIND_ME'),
-      input: Type.String(),
-    },
-    {
-      description:
+  const all_actions = [
+    z
+      .object({
+        action: z.literal(action_types.ASK),
+        agent: z.string(),
+        is_private: z.boolean({ description: 'is this question private?' }),
+      })
+      .describe('ask other team member'),
+    z
+      .object({
+        action: z.literal(action_types.SUMMARY),
+        topic: z.string(),
+        summarized_messages_ids: z.array(z.string(), {
+          description: 'ids of messages that was summarized summarized',
+        }),
+      })
+      .describe('use for results of summarize'),
+    z
+      .object({ action: z.literal(action_types.REMIND_ME) })
+      .describe(
         'ask for a reminder from this conversation about a specific topic',
-    },
-  )
+      ),
+    z
+      .object({
+        action: z.literal(action_types.REFUSE),
+      })
+      .describe('Skip your turn'),
+    z
+      .object({
+        action: z.literal(action_types.NOTE),
+        topic: z.string(),
+        importance: z.number().min(0).max(10),
+      })
+      .describe('if you want to leave some note to future self'),
+    z
+      .object({
+        action: z.literal(action_types.SEARCH_WEB),
+      })
+      .describe('if you want query web for some topic'),
+    z.object(
+      {
+        action: z.literal(action_types.ANSWER),
+        answer: z.string({ description: 'your answer' }),
+      },
+      {
+        description:
+          "Provide a clear and concise answer to the user's question.",
+      },
+    ),
 
-  const ask_agent = Type.Object(
-    {
-      type: Type.Literal('ASK'),
-      input: Type.String({ description: 'your question' }),
-      agent: Type.String({ description: 'agent name' }),
-      is_private: Type.Boolean({ description: 'is this question private?' }),
-    },
-    { description: 'ask other team member' },
-  )
+    z.object(
+      {
+        action: z.literal(action_types.VOTE),
+        vote: z.boolean({ description: 'is this the best answer?' }),
+      },
+      {
+        description:
+          'do you think that last "answer" solves problem, and you agree with it?',
+      },
+    ),
+  ] as const
 
-  return Type.Union([answer, thinking])
+  return z.union(all_actions)
+
+  // return z.object(all_actions)
+
+  // return z.union([
+  //   // answer,
+  //   // vote,
+  //   ask_agent,
+  //   refuse,
+  //   // finish,
+  //   // speak,
+  //   // thinking,
+  //   summarize,
+  //   remindme,
+  //   // thinking,
+  // ])
 }

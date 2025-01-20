@@ -1,12 +1,11 @@
 import OpenAI from 'openai'
 
-export const get_client = (): OpenAI => {
-  const api_key = process.env?.OPENAI_API_KEY || 'default'
-  const api_base =
-    process.env?.OPENAI_BASE_URL || 'http://192.168.5.50:30000/v1'
+export const get_client = (api_key: string, api_base: string): OpenAI => {
+  const api_key_ = process.env?.OPENAI_API_KEY || api_key
+  const api_base_ = process.env?.OPENAI_BASE_URL || api_base
   const client = new OpenAI({
-    apiKey: api_key,
-    baseURL: api_base,
+    apiKey: api_key_,
+    baseURL: api_base_,
   })
   return client
 }

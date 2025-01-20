@@ -4,3 +4,9 @@ tags:
   - 'utils'
   - "enable-lint"
 language: 'typescript'
+
+tasks:
+  run:
+    command:
+      - 'bun'
+      - 'src/start_chat.ts'

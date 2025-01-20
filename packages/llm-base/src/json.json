@@ -1,0 +1,99 @@
+[
+  {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "const": "REMIND_ME"
+      }
+    },
+    "required": ["action"],
+    "additionalProperties": false,
+    "description": "ask for a reminder from this conversation about a specific topic"
+  },
+  {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "const": "ASK"
+      },
+      "agent": {
+        "type": "string"
+      },
+      "is_private": {
+        "type": "boolean",
+        "description": "is this question private?"
+      }
+    },
+    "required": ["action", "agent", "is_private"],
+    "additionalProperties": false,
+    "description": "ask other team member"
+  },
+  {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "const": "SUMMARY"
+      },
+      "topic": {
+        "type": "string"
+      },
+      "summarized_messages_ids": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "ids of messages that was summarized summarized"
+      }
+    },
+    "required": ["action", "topic", "summarized_messages_ids"],
+    "additionalProperties": false,
+    "description": "use for results of summarize"
+  },
+  {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "const": "REFUSE"
+      }
+    },
+    "required": ["action"],
+    "additionalProperties": false,
+    "description": "Skip your turn"
+  },
+  {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "const": "NOTE"
+      },
+      "topic": {
+        "type": "string"
+      },
+      "importance": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 10
+      }
+    },
+    "required": ["action", "topic", "importance"],
+    "additionalProperties": false,
+    "description": "if you want to leave some note to future self"
+  },
+  {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "const": "SEARCH_WEB"
+      }
+    },
+    "required": ["action"],
+    "additionalProperties": false,
+    "description": "if you want query web for some topic"
+  }
+]
